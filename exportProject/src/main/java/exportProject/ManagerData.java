@@ -1,5 +1,6 @@
 package exportProject;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -39,11 +40,19 @@ public class ManagerData {
 		System.out.println("Digite a KAMB:");
 		String kamb = scanner.nextLine();
 
-		try (FileInputStream fis = new FileInputStream("dados.xlsx"); Workbook workbook = new XSSFWorkbook(fis)) {
+		File file = new File("dados.xlsx");
+		boolean fileExists = file.exists();
 
-			Sheet sheet = workbook.getSheet("Dados");
+		try {
+			Workbook workbook;
+			Sheet sheet;
 
-			if (sheet == null) {
+			if (fileExists) {
+				FileInputStream fis = new FileInputStream(file);
+				workbook = new XSSFWorkbook(fis);
+				sheet = workbook.getSheet("Dados");
+			} else {
+				workbook = new XSSFWorkbook();
 				sheet = workbook.createSheet("Dados");
 				Row headerRow = sheet.createRow(0);
 				headerRow.createCell(0).setCellValue("Data");
@@ -67,10 +76,6 @@ public class ManagerData {
 			dataRow.createCell(6).setCellValue(silbor);
 			dataRow.createCell(7).setCellValue(kamb);
 
-			for (int i = 0; i < 8; i++) {
-				sheet.autoSizeColumn(i);
-			}
-
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
 				System.out.println("Dados exportados para o arquivo dados.xlsx");
@@ -82,57 +87,5 @@ public class ManagerData {
 
 	public static void main(String[] args) {
 		addEntry();
-	}
-
-	public static void editEntry(int rowNum) {
-		try (FileInputStream fis = new FileInputStream("dados.xlsx"); Workbook workbook = new XSSFWorkbook(fis)) {
-
-			Sheet sheet = workbook.getSheet("Dados");
-
-			if (sheet == null) {
-				System.out.println("Nenhum dado encontrado para editar.");
-				return;
-			}
-
-			Row row = sheet.getRow(rowNum);
-
-			if (row == null) {
-				System.out.println("Linha não encontrada.");
-				return;
-			}
-
-			Scanner scanner = new Scanner(System.in);
-
-			System.out.println("Digite a nova DATA:");
-			row.getCell(0).setCellValue(scanner.nextLine());
-
-			System.out.println("Digite a nova REFERENCIA:");
-			row.getCell(1).setCellValue(scanner.nextLine());
-
-			System.out.println("Digite a nova OP:");
-			row.getCell(2).setCellValue(scanner.nextLine());
-
-			System.out.println("Digite a nova QUANTIDADE:");
-			row.getCell(3).setCellValue(scanner.nextLine());
-
-			System.out.println("Digite a nova FRENT:");
-			row.getCell(4).setCellValue(scanner.nextLine());
-
-			System.out.println("Digite a nova TRAS:");
-			row.getCell(5).setCellValue(scanner.nextLine());
-
-			System.out.println("Digite a nova SIL/BOR:");
-			row.getCell(6).setCellValue(scanner.nextLine());
-
-			System.out.println("Digite a nova KAMB:");
-			row.getCell(7).setCellValue(scanner.nextLine());
-
-			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
-				workbook.write(fileOut);
-				System.out.println("Dados editados e exportados para o arquivo dados.xlsx");
-			}
-		} catch (IOException e) {
-			System.out.println("Erro ao fechar o workbook: " + e.getMessage());
-		}
 	}
 }

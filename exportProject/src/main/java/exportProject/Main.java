@@ -25,7 +25,7 @@ public class Main {
 				System.out.println("Digite o número da linha no documento excel a ser editada: ");
 				int rowNum = scanner.nextInt();
 				scanner.nextLine();
-				ManagerData.editEntry(rowNum);
+				ManagerEdit.ManagerEdit(rowNum);
 			case 5:
 				System.out.println("Saindo...");
 				scanner.close();
