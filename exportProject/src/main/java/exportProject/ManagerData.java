@@ -39,6 +39,9 @@ public class ManagerData {
 
 		System.out.println("Digite a KAMB:");
 		String kamb = scanner.nextLine();
+		
+		System.out.println("Digite o STATUS: ");
+		String sts = scanner.nextLine();
 
 		File file = new File("dados.xlsx");
 		boolean fileExists = file.exists();
@@ -63,6 +66,7 @@ public class ManagerData {
 				headerRow.createCell(5).setCellValue("Tras");
 				headerRow.createCell(6).setCellValue("Sil/Bor");
 				headerRow.createCell(7).setCellValue("Kamba");
+				headerRow.createCell(8).setCellValue("Status");
 			}
 
 			int lastRowNum = sheet.getLastRowNum();
@@ -75,6 +79,7 @@ public class ManagerData {
 			dataRow.createCell(5).setCellValue(tras);
 			dataRow.createCell(6).setCellValue(silbor);
 			dataRow.createCell(7).setCellValue(kamb);
+			dataRow.createCell(8).setCellValue(sts);
 
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
