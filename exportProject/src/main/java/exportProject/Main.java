@@ -11,8 +11,8 @@ public class Main {
 			System.out.println("Menu principal");
 			System.out.println("1. Adicionar dados");
 			System.out.println("2. Editar dados");
-			System.out.println("3. Implements");
-			System.out.println("4. Implements");
+			System.out.println("3. Exibir entrada de OPS");
+			System.out.println("4. Deletar dados");
 			System.out.println("5. Sair");
 			int choice = scanner.nextInt();
 			scanner.nextLine();
@@ -26,6 +26,12 @@ public class Main {
 				int rowNum = scanner.nextInt();
 				scanner.nextLine();
 				ManagerEdit.ManagerEdit(rowNum);
+				break;
+			case 3:
+				ManagerList.ManagerList();
+				break;
+			case 4:
+				ManagerDelete.ManagerDelete(choice); //manutencao
 			case 5:
 				System.out.println("Saindo...");
 				scanner.close();
