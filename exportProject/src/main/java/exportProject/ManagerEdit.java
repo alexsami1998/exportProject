@@ -54,6 +54,9 @@ public class ManagerEdit {
 
 			System.out.println("Digite a nova KAMB:");
 			row.getCell(7).setCellValue(scanner.nextLine());
+			
+			System.out.println("Digite o novo STATUS");
+			row.getCell(8).setCellValue(scanner.nextLine());
 
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
