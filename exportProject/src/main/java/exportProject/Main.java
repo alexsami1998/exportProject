@@ -19,16 +19,13 @@ public class Main {
 
 			switch (choice) {
 			case 1:
-				ManagerData.addEntry();
+				//ManagerData.addEntry();
 				break;
 			case 2:
 				System.out.println("Digite o número da linha no documento excel a ser editada: ");
 				int rowNum = scanner.nextInt();
 				scanner.nextLine();
 				ManagerEdit.ManagerEdit(rowNum);
-				break;
-			case 3:
-				ManagerList.ManagerList();
 				break;
 			case 4:
 				ManagerDelete.ManagerDelete(choice); //manutencao
