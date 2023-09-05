@@ -2,6 +2,7 @@ package exportProjectInterface;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -47,28 +48,6 @@ public class Gui2 extends JFrame {
 		});
 	}
 
-	JButton btnEnviar = new JButton("Salvar");
-	btnEnviar.addActionListener(new ActionListener () {
-		public void actionPerformed(ActionEvent e) {
-			
-		String data = textFieldData.getText();
-		String ref = textFieldRef.getText();
-		String op = textFieldOp.getText();
-		String qntd = textFieldQntd.getText();
-		String frent = textFieldFrent.getText();
-		String tras = textFieldTras.getText();
-		String silbor = textFieldSilbor.getText();
-		String kamb = textFieldKamb.getText();
-		String sts = textFieldSts.getText();
-		
-		ManagerData managerData = new ManagerData();
-		
-		managerData.addEntry(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
-		
-		dispose();
-		}
-	});
-
 	public Gui2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -77,6 +56,31 @@ public class Gui2 extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Salvar dados");
+		btnNewButton.setBounds(147, 206, 117, 29);
+		contentPane.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e) {
+				
+				ManagerData managerData = new ManagerData();
+
+				
+			String data = textFieldData.getText();
+			String ref = textFieldRef.getText();
+			String op = textFieldOp.getText();
+			String qntd = textFieldQntd.getText();
+			String frent = textFieldFrent.getText();
+			String tras = textFieldTras.getText();
+			String silbor = textFieldSilbor.getText();
+			String kamb = textFieldKamb.getText();
+			String sts = textFieldSts.getText();
+			
+			
+			managerData.addEntry(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
+			Gui2.this.dispose();
+			}
+		});
 
 		JLabel lblNewLabel = new JLabel("Data");
 		lblNewLabel.setBounds(16, 6, 29, 16);
