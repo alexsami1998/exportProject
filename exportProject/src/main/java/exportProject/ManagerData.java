@@ -13,35 +13,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ManagerData {
 
-	public static void addEntry() {
-		Scanner scanner = new Scanner(System.in);
-
-		System.out.println("Digite a DATA:");
-		String data = scanner.nextLine();
-
-		System.out.println("Digite a REFERENCIA:");
-		String ref = scanner.nextLine();
-
-		System.out.println("Digite a OP:");
-		String op = scanner.nextLine();
-
-		System.out.println("Digite a QUANTIDADE:");
-		String qntd = scanner.nextLine();
-
-		System.out.println("Digite a FRENT:");
-		String frent = scanner.nextLine();
-
-		System.out.println("Digite a TRAS:");
-		String tras = scanner.nextLine();
-
-		System.out.println("Digite a SIL/BOR:");
-		String silbor = scanner.nextLine();
-
-		System.out.println("Digite a KAMB:");
-		String kamb = scanner.nextLine();
+	public void addEntry(String data, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts ) {
 		
-		System.out.println("Digite o STATUS: ");
-		String sts = scanner.nextLine();
 
 		File file = new File("dados.xlsx");
 		boolean fileExists = file.exists();
@@ -88,9 +61,5 @@ public class ManagerData {
 		} catch (IOException e) {
 			System.out.println("Erro ao fechar o workbook: " + e.getMessage());
 		}
-	}
-
-	public static void main(String[] args) {
-		addEntry();
 	}
 }
