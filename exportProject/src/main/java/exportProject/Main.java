@@ -19,7 +19,7 @@ public class Main {
 
 			switch (choice) {
 			case 1:
-				//ManagerData.addEntry();
+				ManagerData.addEntryProhibited();
 				break;
 			case 2:
 				System.out.println("Digite o número da linha no documento excel a ser editada: ");
@@ -33,6 +33,8 @@ public class Main {
 				System.out.println("Saindo...");
 				scanner.close();
 				return;
+			case 6:
+				ManagerDataAloc.addEntryAloc();
 			}
 	        }
 		}
