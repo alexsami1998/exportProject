@@ -13,7 +13,33 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ManagerData {
 
-	public void addEntry(String data, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts ) {
+	public static void addEntryProhibited() {
+		
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Digite a DATA:");
+		String data = scanner.nextLine();
+
+		System.out.println("Digite a REFERENCIA:");
+		String ref = scanner.nextLine();
+
+		System.out.println("Digite a OP:");
+		String op = scanner.nextLine();
+
+		System.out.println("Digite a QUANTIDADE:");
+		String qntd = scanner.nextLine();
+
+		System.out.println("Digite a FRENT:");
+		String frent = scanner.nextLine();
+
+		System.out.println("Digite a TRAS:");
+		String tras = scanner.nextLine();
+
+		System.out.println("Digite a SIL/BOR:");
+		String silbor = scanner.nextLine();
+
+		System.out.println("Digite a KAMB:");
+		String kamb = scanner.nextLine();
 		
 
 		File file = new File("dados.xlsx");
@@ -29,7 +55,7 @@ public class ManagerData {
 				sheet = workbook.getSheet("Dados");
 			} else {
 				workbook = new XSSFWorkbook();
-				sheet = workbook.createSheet("Dados");
+				sheet = workbook.createSheet("Entrada");
 				Row headerRow = sheet.createRow(0);
 				headerRow.createCell(0).setCellValue("Data");
 				headerRow.createCell(1).setCellValue("Referencia");
@@ -52,7 +78,7 @@ public class ManagerData {
 			dataRow.createCell(5).setCellValue(tras);
 			dataRow.createCell(6).setCellValue(silbor);
 			dataRow.createCell(7).setCellValue(kamb);
-			dataRow.createCell(8).setCellValue(sts);
+			//dataRow.createCell(8).setCellValue(sts);
 
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
