@@ -14,7 +14,7 @@ public class ManagerList {
         try (FileInputStream fis = new FileInputStream("dados.xlsx");
              Workbook workbook = new XSSFWorkbook(fis)) {
 
-            Sheet sheet = workbook.getSheet("Dados");
+            Sheet sheet = workbook.getSheet("Entrada");
 
             if (sheet != null) {
                 for (Row row : sheet) {
@@ -34,5 +34,31 @@ public class ManagerList {
 
     public static void main(String[] args) {
         ManagerList();
+    }
+    
+    public static void ManagerListAloc() {
+        try (FileInputStream fis = new FileInputStream("dados.xlsx");
+             Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheet("Alocacao");
+
+            if (sheet != null) {
+                for (Row row : sheet) {
+                    for (org.apache.poi.ss.usermodel.Cell cell : row) {
+                        System.out.print(cell.toString() + "\t");
+                    }
+                    System.out.println();
+                }
+            } else {
+                System.out.println("A planilha 'Dados' não existe no arquivo.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erro ao abrir o arquivo: " + e.getMessage());
+        }
+    }
+    
+    public static void Main() {
+    	ManagerListAloc();
     }
 }
