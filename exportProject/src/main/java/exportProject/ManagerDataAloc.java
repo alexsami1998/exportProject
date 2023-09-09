@@ -13,32 +13,20 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ManagerDataAloc {
 
-    public static void addEntryAloc() {
+	public static void addEntryAloc(String ref, String op, String qntd, String sts) {
 		
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Digite a oficina:");
-		String ofc = scanner.nextLine();
+		System.out.println("Digite a ofc:");
+		String ofi = scanner.nextLine();
 
-		System.out.println("Digite a data inicio:");
-		String dini = scanner.nextLine();
+		System.out.println("Digite a data ini:");
+		String dtinicio = scanner.nextLine();
 
-		System.out.println("Digite a referencia:");
-		String ref = scanner.nextLine();
-
-		System.out.println("Digite a OP:");
-		String op = scanner.nextLine();
-
-		System.out.println("Digite a Quantidade:");
-		String qntd = scanner.nextLine();
-
-		System.out.println("Digite a TRAS:");
-		String dfin = scanner.nextLine();
-
-		System.out.println("Digite a SIL/BOR:");
-		String sts = scanner.nextLine();
+		System.out.println("Digite a dtfinal:");
+		String dtfinal = scanner.nextLine();
 		
-		
+
 		File file = new File("dados.xlsx");
 		boolean fileExists = file.exists();
 
@@ -54,24 +42,24 @@ public class ManagerDataAloc {
 				workbook = new XSSFWorkbook();
 				sheet = workbook.createSheet("Alocacao");
 				Row headerRow = sheet.createRow(0);
-				headerRow.createCell(0).setCellValue("Oficina");
-				headerRow.createCell(1).setCellValue("DT inicio");
-				headerRow.createCell(2).setCellValue("Referencia");
+				headerRow.createCell(0).setCellValue("OFICINA");
+				headerRow.createCell(1).setCellValue("DT INICIO");
+				headerRow.createCell(2).setCellValue("REFERENCIA");
 				headerRow.createCell(3).setCellValue("OP");
-				headerRow.createCell(4).setCellValue("Quantidade");
-				headerRow.createCell(5).setCellValue("DT final");
-				headerRow.createCell(6).setCellValue("Status");
+				headerRow.createCell(4).setCellValue("QUANTIDADE");
+				headerRow.createCell(5).setCellValue("DT FINAL");
+				headerRow.createCell(6).setCellValue("STATUS");
 			}
 
 			int lastRowNum = sheet.getLastRowNum();
 			Row dataRow = sheet.createRow(lastRowNum + 1);
-			dataRow.createCell(0).setCellValue(ofc);
-			dataRow.createCell(1).setCellValue(dini);
+			dataRow.createCell(0).setCellValue(ofi);
+			dataRow.createCell(1).setCellValue(dtinicio);
 			dataRow.createCell(2).setCellValue(ref);
 			dataRow.createCell(3).setCellValue(op);
-			dataRow.createCell(3).setCellValue(qntd);
-			dataRow.createCell(4).setCellValue(dfin);
-			dataRow.createCell(5).setCellValue(sts);
+			dataRow.createCell(4).setCellValue(qntd);
+			dataRow.createCell(5).setCellValue(dtfinal);
+			dataRow.createCell(6).setCellValue(sts);
 
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
