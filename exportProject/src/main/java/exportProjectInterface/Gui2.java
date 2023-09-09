@@ -77,7 +77,7 @@ public class Gui2 extends JFrame {
 			String sts = textFieldSts.getText();
 			
 			
-			managerData.addEntry(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
+			managerData.addEntryProhibited(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
 			Gui2.this.dispose();
 			}
 		});
