@@ -1,50 +1,65 @@
 package exportProject;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ManagerDelete {
 
-	public static void ManagerDelete(int rowNumber) {
-        try (FileInputStream fis = new FileInputStream("dados.xlsx");
-             Workbook workbook = new XSSFWorkbook(fis)) {
+    public static void deleteEntryByOp(String op) {
+        try {
+            FileInputStream fis = new FileInputStream(new File("dados.xlsx"));
+            Workbook workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheet("Entrada");
 
-            Sheet sheet = workbook.getSheet("Dados");
+            Iterator<Row> iterator = sheet.iterator();
 
-            if (sheet != null) {
-                int lastRowNum = sheet.getLastRowNum();
+            while (iterator.hasNext()) {
+                Row currentRow = iterator.next();
+                Cell opCell = currentRow.getCell(2); // Coluna OP
 
-                if (rowNumber >= 0 && rowNumber <= lastRowNum) {
-                    sheet.removeRow(sheet.getRow(rowNumber));
-                } else {
-                    System.out.println("Número de linha fora do intervalo.");
+                if (opCell != null && opCell.getCellType() == CellType.STRING) {
+                    String opValue = opCell.getStringCellValue();
+
+                    if (opValue.equals(op)) {
+                        // Se a OP encontrada corresponder à OP fornecida, exclua a linha
+                        sheet.removeRow(currentRow);
+                        System.out.println("Entrada com OP " + op + " excluída com sucesso.");
+                        FileOutputStream fos = new FileOutputStream(new File("dados.xlsx"));
+                        workbook.write(fos);
+                        fos.close();
+                        workbook.close();
+                        fis.close();
+                        return; // Encontrou a linha, não é necessário continuar a busca
+                    }
                 }
-
-                sheet.shiftRows(rowNumber + 1, lastRowNum, -1);
-            } else {
-                System.out.println("A planilha 'Dados' não existe no arquivo.");
             }
 
-            try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
-                workbook.write(fileOut);
-                System.out.println("Linha removida com sucesso.");
-            }
+            // Se não encontrou uma linha com a OP fornecida
+            System.out.println("Nenhuma entrada encontrada para a OP: " + op);
+
+            workbook.close();
+            fis.close();
         } catch (IOException e) {
-            System.out.println("Erro ao abrir o arquivo: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o número da linha que deseja remover: ");
-        int rowNumber = scanner.nextInt();
-        ManagerDelete(rowNumber);
-        scanner.close();
+        System.out.print("Digite a OP que deseja excluir: ");
+        String opToDelete = scanner.nextLine();
+
+        deleteEntryByOp(opToDelete);
     }
 }
