@@ -53,8 +53,7 @@ public class SearchOpByData {
 						workbook.close();
 						fis.close();
 						ManagerDataAloc.addEntryAloc(ref, opN, qntd, sts); // Exclui a linha da planilha "Entrada"
-						
-						//int nowOp = sheet.removeRow(null);
+						ManagerDelete.deleteEntryByOp(op);
 						return; // Encontrou a linha, não é necessário continuar a busca
 					}
 				}
