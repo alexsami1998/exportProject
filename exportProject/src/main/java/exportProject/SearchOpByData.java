@@ -52,8 +52,8 @@ public class SearchOpByData {
 						System.out.println("Status: " + sts);
 						workbook.close();
 						fis.close();
-						ManagerDataAloc.addEntryAloc(ref, opN, qntd, sts); // Exclui a linha da planilha "Entrada"
-						ManagerDelete.deleteEntryByOp(op);
+						ManagerDataAloc.addEntryAloc(ref, opN, qntd, sts); // manda os dados da planilha entrada para alocacao
+						ManagerDelete.deleteEntryByOp(op); // Responsavel por deletar os dados que foram para a planilha alocacao da planilha entrada
 						return; // Encontrou a linha, não é necessário continuar a busca
 					}
 				}
