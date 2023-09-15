@@ -64,6 +64,7 @@ public class ManagerDataAloc {
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
 				System.out.println("Dados exportados para o arquivo dados.xlsx");
+				HistoryData.registerAloc(ofi, dtinicio, ref, op, qntd, dtfinal, sts);
 			}
 		} catch (IOException e) {
 			System.out.println("Erro ao fechar o workbook: " + e.getMessage());
