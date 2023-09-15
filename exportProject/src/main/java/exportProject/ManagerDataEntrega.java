@@ -66,6 +66,7 @@ public class ManagerDataEntrega {
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
 				System.out.println("Dados exportados para o arquivo dados.xlsx");
+				HistoryData.registerEntrega(data, fac, ref, op, qop, qprod, sts);
 			}
 		} catch (IOException e) {
 			System.out.println("Erro ao fechar o workbook: " + e.getMessage());
