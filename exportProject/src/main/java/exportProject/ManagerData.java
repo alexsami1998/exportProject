@@ -53,9 +53,10 @@ public class ManagerData {
 			dataRow.createCell(6).setCellValue(silbor);
 			dataRow.createCell(7).setCellValue(kamb);
 			dataRow.createCell(8).setCellValue(sts);
-
+			
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
+				HistoryData.registerEntrada(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
 				System.out.println("Dados exportados para o arquivo dados.xlsx");
 			}
 		} catch (IOException e) {
