@@ -25,9 +25,6 @@ public class EntradaAloc extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -76,7 +73,6 @@ public class EntradaAloc extends JFrame {
 		});
 	}
 
-	// Método para preencher o modelo de tabela com os dados do Excel
 	private void preencherModeloTabela(DefaultTableModel tableModel) {
         try (FileInputStream fis = new FileInputStream("dados.xlsx");
              Workbook workbook = new XSSFWorkbook(fis)) {
@@ -84,18 +80,16 @@ public class EntradaAloc extends JFrame {
             Sheet sheet = workbook.getSheet("Alocacao");
 
             if (sheet != null) {
-                // Adicione as colunas à tabela
                 Row headerRow = sheet.getRow(0);
                 for (int i = 0; i < headerRow.getLastCellNum(); i++) {
                     Cell cell = headerRow.getCell(i);
                     if (cell != null) {
                         tableModel.addColumn(cell.getStringCellValue());
                     } else {
-                        tableModel.addColumn(""); // Adicione uma coluna vazia
+                        tableModel.addColumn(""); 
                     }
                 }
 
-                // Adicione as linhas de dados à tabela
                 for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
                     Row row = sheet.getRow(rowIndex);
                     if (row != null) {
@@ -105,7 +99,7 @@ public class EntradaAloc extends JFrame {
                             if (cell != null) {
                                 rowData[columnIndex] = cell.toString();
                             } else {
-                                rowData[columnIndex] = ""; // Adicione um valor vazio
+                                rowData[columnIndex] = ""; 
                             }
                         }
                         tableModel.addRow(rowData);

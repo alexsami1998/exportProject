@@ -50,16 +50,12 @@ public class EntradaListar extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        // Crie um modelo de tabela
         DefaultTableModel tableModel = new DefaultTableModel();
 
-        // Preencha o modelo de tabela com os dados do Excel
         preencherModeloTabela(tableModel);
 
-        // Crie a JTable com o modelo de tabela
         table = new JTable(tableModel);
 
-        // Adicione a JTable a um JScrollPane para permitir a rolagem
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(6, 6, 835, 618);
         contentPane.add(scrollPane);
@@ -97,7 +93,6 @@ public class EntradaListar extends JFrame {
         contentPane.add(btnEditarDados);
     }
 
-    // Método para preencher o modelo de tabela com os dados do Excel
     private void preencherModeloTabela(DefaultTableModel tableModel) {
         try (FileInputStream fis = new FileInputStream("dados.xlsx");
              Workbook workbook = new XSSFWorkbook(fis)) {
@@ -105,18 +100,16 @@ public class EntradaListar extends JFrame {
             Sheet sheet = workbook.getSheet("Entrada");
 
             if (sheet != null) {
-                // Adicione as colunas à tabela
                 Row headerRow = sheet.getRow(0);
                 for (int i = 0; i < headerRow.getLastCellNum(); i++) {
                     Cell cell = headerRow.getCell(i);
                     if (cell != null) {
                         tableModel.addColumn(cell.getStringCellValue());
                     } else {
-                        tableModel.addColumn(""); // Adicione uma coluna vazia
+                        tableModel.addColumn("");
                     }
                 }
 
-                // Adicione as linhas de dados à tabela
                 for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
                     Row row = sheet.getRow(rowIndex);
                     if (row != null) {
@@ -126,7 +119,7 @@ public class EntradaListar extends JFrame {
                             if (cell != null) {
                                 rowData[columnIndex] = cell.toString();
                             } else {
-                                rowData[columnIndex] = ""; // Adicione um valor vazio
+                                rowData[columnIndex] = "";
                             }
                         }
                         tableModel.addRow(rowData);
