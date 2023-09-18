@@ -58,8 +58,8 @@ public class SalvarEntrada extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton btnNewButton = new JButton("Salvar dados");
-		btnNewButton.setForeground(new Color(0, 0, 204));
+		JButton btnNewButton = new JButton("SALVAR DADOS");
+		btnNewButton.setForeground(Color.RED);
 		btnNewButton.setBounds(710, 113, 216, 54);
 
 		contentPane.add(btnNewButton);
@@ -166,8 +166,8 @@ public class SalvarEntrada extends JFrame {
 		contentPane.add(textFieldSts);
 		textFieldSts.setColumns(10);
 
-		JButton btnNewButton_1 = new JButton("Voltar");
-		btnNewButton_1.setForeground(Color.RED);
+		JButton btnNewButton_1 = new JButton("VOLTAR");
+		btnNewButton_1.setForeground(Color.BLUE);
 		btnNewButton_1.setBounds(710, 205, 216, 54);
 		contentPane.add(btnNewButton_1);
 		
