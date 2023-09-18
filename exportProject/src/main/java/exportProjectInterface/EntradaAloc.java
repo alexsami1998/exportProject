@@ -78,34 +78,46 @@ public class EntradaAloc extends JFrame {
 
 	// Método para preencher o modelo de tabela com os dados do Excel
 	private void preencherModeloTabela(DefaultTableModel tableModel) {
-		try (FileInputStream fis = new FileInputStream("dados.xlsx"); Workbook workbook = new XSSFWorkbook(fis)) {
+        try (FileInputStream fis = new FileInputStream("dados.xlsx");
+             Workbook workbook = new XSSFWorkbook(fis)) {
 
-			Sheet sheet = workbook.getSheet("Alocacao");
+            Sheet sheet = workbook.getSheet("Alocacao");
 
-			if (sheet != null) {
-				// Adicione as colunas à tabela
-				Row headerRow = sheet.getRow(0);
-				for (int i = 0; i < headerRow.getLastCellNum(); i++) {
-					Cell cell = headerRow.getCell(i);
-					tableModel.addColumn(cell.getStringCellValue());
-				}
+            if (sheet != null) {
+                // Adicione as colunas à tabela
+                Row headerRow = sheet.getRow(0);
+                for (int i = 0; i < headerRow.getLastCellNum(); i++) {
+                    Cell cell = headerRow.getCell(i);
+                    if (cell != null) {
+                        tableModel.addColumn(cell.getStringCellValue());
+                    } else {
+                        tableModel.addColumn(""); // Adicione uma coluna vazia
+                    }
+                }
 
-				// Adicione as linhas de dados à tabela
-				for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
-					Row row = sheet.getRow(rowIndex);
-					Object[] rowData = new Object[row.getLastCellNum()];
-					for (int columnIndex = 0; columnIndex < row.getLastCellNum(); columnIndex++) {
-						Cell cell = row.getCell(columnIndex);
-						rowData[columnIndex] = cell.toString();
-					}
-					tableModel.addRow(rowData);
-				}
-			} else {
-				System.out.println("A planilha 'Entrada' não existe no arquivo.");
-			}
+                // Adicione as linhas de dados à tabela
+                for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
+                    Row row = sheet.getRow(rowIndex);
+                    if (row != null) {
+                        Object[] rowData = new Object[row.getLastCellNum()];
+                        for (int columnIndex = 0; columnIndex < row.getLastCellNum(); columnIndex++) {
+                            Cell cell = row.getCell(columnIndex);
+                            if (cell != null) {
+                                rowData[columnIndex] = cell.toString();
+                            } else {
+                                rowData[columnIndex] = ""; // Adicione um valor vazio
+                            }
+                        }
+                        tableModel.addRow(rowData);
+                    }
+                }
+            } else {
+                System.out.println("A planilha 'Entrada' não existe no arquivo.");
+            }
 
-		} catch (IOException e) {
-			System.out.println("Erro ao abrir o arquivo: " + e.getMessage());
-		}
-	}
+        } catch (IOException e) {
+            System.out.println("Erro ao abrir o arquivo: " + e.getMessage());
+        }
+    }
+
 }
