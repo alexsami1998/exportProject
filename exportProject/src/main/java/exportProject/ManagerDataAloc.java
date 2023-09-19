@@ -4,28 +4,23 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Scanner;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import exportProjectInterface.MigEntDados;
+
 public class ManagerDataAloc {
 
 	public static void addEntryAloc(String ref, String op, String qntd, String sts) {
-		
-		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Digite a ofc:");
-		String ofi = scanner.nextLine();
+		MigEntDados migEntDados = new MigEntDados();
 
-		System.out.println("Digite a data ini:");
-		String dtinicio = scanner.nextLine();
-
-		System.out.println("Digite a dtfinal:");
-		String dtfinal = scanner.nextLine();
-		
+		String ofi = null;
+		String dtinicio = null;
+		String dtfinal = null;
 
 		File file = new File("dados.xlsx");
 		boolean fileExists = file.exists();
