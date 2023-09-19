@@ -73,6 +73,7 @@ public class MigrarOpEnt extends JFrame {
 	            
 	            Principal principal = new Principal();
 	            principal.setVisible(true);
+	            JOptionPane.showMessageDialog(null, "MIGRAÇÃO COMPLETA");
 			}
 		});
 		

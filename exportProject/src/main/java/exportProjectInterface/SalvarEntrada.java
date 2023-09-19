@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -82,6 +83,7 @@ public class SalvarEntrada extends JFrame {
 				SalvarEntrada.this.setVisible(false);
 				Principal principal = new Principal();
 				principal.setVisible(true);
+				JOptionPane.showMessageDialog(null, "OP REGISTRADA");
 			}
 		});
 
