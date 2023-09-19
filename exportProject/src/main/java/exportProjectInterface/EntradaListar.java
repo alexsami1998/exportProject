@@ -25,6 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class EntradaListar extends JFrame {
 	
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 
@@ -93,6 +94,7 @@ public class EntradaListar extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EntradaListar.this.setVisible(false);
+				
 				Principal principal = new Principal();
 				principal.setVisible(true);
 			}
@@ -105,10 +107,10 @@ public class EntradaListar extends JFrame {
 
 		btnMigrarAlocacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				EntradaListar.this.setVisible(false);
+				
 				MigrarOpEnt migrarOpEnt = new MigrarOpEnt();
 				migrarOpEnt.setVisible(true);
-
-				EntradaListar.this.setVisible(false);
 			}
 		});
 	}
