@@ -18,10 +18,9 @@ import java.awt.Color;
 
 public class MigrarOpEnt extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -54,12 +53,12 @@ public class MigrarOpEnt extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		btnNewButton = new JButton("Prosseguir");
-		btnNewButton.setForeground(Color.RED);
-		btnNewButton.setBounds(510, 207, 117, 77);
-		contentPane.add(btnNewButton);
+		JButton btnProsseguir = new JButton("PROSSEGUIR");
+		btnProsseguir.setForeground(Color.RED);
+		btnProsseguir.setBounds(510, 207, 117, 77);
+		contentPane.add(btnProsseguir);
 		
-		btnNewButton.addActionListener(new ActionListener () {
+		btnProsseguir.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e) {
 				
 				String opDesejada = textField.getText();
@@ -77,12 +76,12 @@ public class MigrarOpEnt extends JFrame {
 			}
 		});
 		
-		btnNewButton_1 = new JButton("VOLTAR");
-		btnNewButton_1.setForeground(Color.BLUE);
-		btnNewButton_1.setBounds(286, 207, 117, 77);
-		contentPane.add(btnNewButton_1);
+		JButton btnVoltar = new JButton("VOLTAR");
+		btnVoltar.setForeground(Color.BLUE);
+		btnVoltar.setBounds(286, 207, 117, 77);
+		contentPane.add(btnVoltar);
 		
-		btnNewButton_1.addActionListener(new ActionListener () {
+		btnVoltar.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e) {
 				MigrarOpEnt.this.setVisible(false);
 				EntradaListar entradaListar = new EntradaListar();
