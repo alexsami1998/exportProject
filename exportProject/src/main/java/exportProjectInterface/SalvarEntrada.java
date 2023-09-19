@@ -112,7 +112,7 @@ public class SalvarEntrada extends JFrame {
 		lblNewLabel_5.setBounds(19, 388, 61, 16);
 		contentPane.add(lblNewLabel_5);
 
-		JLabel lblNewLabel_6 = new JLabel("KAMB");
+		JLabel lblNewLabel_6 = new JLabel("KANBAN");
 		lblNewLabel_6.setBounds(19, 426, 61, 16);
 		contentPane.add(lblNewLabel_6);
 
