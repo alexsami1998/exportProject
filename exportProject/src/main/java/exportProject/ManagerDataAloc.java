@@ -10,13 +10,9 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import exportProjectInterface.MigEntDados;
-
 public class ManagerDataAloc {
 
 	public static void addEntryAloc(String ref, String op, String qntd, String sts) {
-
-		MigEntDados migEntDados = new MigEntDados();
 
 		String ofi = null;
 		String dtinicio = null;
