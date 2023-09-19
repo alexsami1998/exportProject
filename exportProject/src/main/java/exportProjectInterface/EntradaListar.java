@@ -125,7 +125,6 @@ public class EntradaListar extends JFrame {
 					if (cell != null) {
 						cell.setCellValue(newValue);
 
-						// Salve as alterações de volta no arquivo Excel
 						try (FileOutputStream fos = new FileOutputStream("dados.xlsx")) {
 							workbook.write(fos);
 						}
