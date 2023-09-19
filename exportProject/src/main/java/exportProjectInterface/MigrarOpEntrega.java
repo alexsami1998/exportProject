@@ -19,12 +19,7 @@ public class MigrarOpEntrega extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -38,9 +33,6 @@ public class MigrarOpEntrega extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public MigrarOpEntrega() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 969, 658);
@@ -59,12 +51,12 @@ public class MigrarOpEntrega extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		btnNewButton = new JButton("Prosseguir");
-		btnNewButton.setForeground(Color.RED);
-		btnNewButton.setBounds(510, 207, 117, 77);
-		contentPane.add(btnNewButton);
+		JButton btnProsseguir = new JButton("PROSSEGUIR");
+		btnProsseguir.setForeground(Color.RED);
+		btnProsseguir.setBounds(510, 207, 117, 77);
+		contentPane.add(btnProsseguir);
 
-		btnNewButton.addActionListener(new ActionListener() {
+		btnProsseguir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String opDesejada = textField.getText();
@@ -79,16 +71,17 @@ public class MigrarOpEntrega extends JFrame {
 			}
 		});
 
-		btnNewButton_1 = new JButton("VOLTAR");
-		btnNewButton_1.setForeground(Color.BLUE);
-		btnNewButton_1.setBounds(286, 207, 117, 77);
-		contentPane.add(btnNewButton_1);
+		JButton btnVoltar = new JButton("VOLTAR");
+		btnVoltar.setForeground(Color.BLUE);
+		btnVoltar.setBounds(286, 207, 117, 77);
+		contentPane.add(btnVoltar);
 
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MigrarOpEntrega.this.setVisible(false);
-				EntradaListar entradaListar = new EntradaListar();
-				entradaListar.setVisible(true);
+				
+				EntradaAloc entradaAloc = new EntradaAloc();
+				entradaAloc.setVisible(true);
 			}
 		});
 	}
