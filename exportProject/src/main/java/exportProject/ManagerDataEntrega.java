@@ -15,18 +15,11 @@ public class ManagerDataEntrega {
 
 	public static void addEntryEntrega(String ref, String op, String sts) {
 		Scanner scanner = new Scanner(System.in);
-
-		System.out.println("Digite a DATA:");
-		String data = scanner.nextLine();
-
-		System.out.println("Digite a data FACCAO:");
-		String fac = scanner.nextLine();
-
-		System.out.println("Digite a Q. OP.:");
-		String qop = scanner.nextLine();
 		
-		System.out.println("Digite a Q. PROD.");
-		String qprod = scanner.nextLine();
+		String data = null;
+		String fac = null;
+		String qop = null;
+		String qprod = null;
 		
 
 		File file = new File("dados.xlsx");
