@@ -54,12 +54,11 @@ public class SearchOpByData {
 						fis.close();
 						ManagerDataAloc.addEntryAloc(ref, opN, qntd, sts); // manda os dados da planilha entrada para alocacao
 						ManagerDelete.deleteEntryByOp(op); // Responsavel por deletar os dados que foram para a planilha alocacao da planilha entrada
-						return; // Encontrou a linha, não é necessário continuar a busca
+						return; 
 					}
 				}
 			}
 
-			// Se não encontrou uma linha com a OP fornecida
 			System.out.println("Nenhuma entrada encontrada para a OP: " + op);
 
 			workbook.close();
