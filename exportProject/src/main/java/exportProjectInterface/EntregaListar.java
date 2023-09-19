@@ -69,7 +69,7 @@ public class EntregaListar extends JFrame {
 
 		JButton btnEditarDados = new JButton("EDITAR DADOS");
 		btnEditarDados.setForeground(Color.ORANGE);
-		btnEditarDados.setBounds(846, 128, 117, 77);
+		btnEditarDados.setBounds(846, 6, 117, 77);
 		contentPane.add(btnEditarDados);
 
 		btnEditarDados.addActionListener(new ActionListener() {
@@ -94,7 +94,7 @@ public class EntregaListar extends JFrame {
 
 		JButton btnVoltar = new JButton("VOLTAR");
 		btnVoltar.setForeground(Color.BLUE);
-		btnVoltar.setBounds(846, 250, 117, 77);
+		btnVoltar.setBounds(846, 95, 117, 77);
 		contentPane.add(btnVoltar);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -104,7 +104,74 @@ public class EntregaListar extends JFrame {
 				principal.setVisible(true);
 			}
 		});
+		
+		JButton btnExcluirDados = new JButton("EXCLUIR");
+        btnExcluirDados.setForeground(new Color(139, 0, 0));
+        btnExcluirDados.setBounds(846, 547, 117, 77);
+        contentPane.add(btnExcluirDados);
+
+        btnExcluirDados.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = table.getSelectedRow();
+
+                if (selectedRow != -1) {
+                    Object opValue = table.getValueAt(selectedRow, getColumnIndexByName("OP"));
+
+                    if (opValue != null) {
+                        String opToBeDeleted = opValue.toString();
+                        excluirLinhaPorOP(opToBeDeleted);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "A célula 'OP' está vazia.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir.");
+                }
+            }
+        });
 	}
+	
+	private void excluirLinhaPorOP(String opToBeDeleted) {
+        try (FileInputStream fis = new FileInputStream("dados.xlsx"); Workbook workbook = new XSSFWorkbook(fis)) {
+            Sheet sheet = workbook.getSheet("Entrega");
+
+            if (sheet != null) {
+                for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
+                    Row row = sheet.getRow(rowIndex);
+                    if (row != null) {
+                        Cell opCell = row.getCell(getColumnIndexByName("OP"));
+                        if (opCell != null) {
+                            String opCellValue = opCell.toString();
+                            if (opToBeDeleted.equals(opCellValue)) {
+                                sheet.removeRow(row);
+                                EntregaListar.this.setVisible(false);
+                                
+                                Principal principal = new Principal();
+                                principal.setVisible(true);
+                                JOptionPane.showMessageDialog(null, "OP EXCLUÍDA");
+                                break;
+                            }
+                        }
+                    }
+                }
+                try (FileOutputStream fos = new FileOutputStream("dados.xlsx")) {
+                    workbook.write(fos);
+                }
+            } else {
+                System.out.println("A planilha 'Entrada' não existe no arquivo.");
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao abrir/gravar o arquivo Excel: " + e.getMessage());
+        }
+    }
+	
+	private int getColumnIndexByName(String columnName) {
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            if (columnName.equals(table.getColumnName(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
 	
 	private void atualizarCelulaNoExcel(int rowIndex, int columnIndex, String newValue) {
 		try (FileInputStream fis = new FileInputStream("dados.xlsx"); Workbook workbook = new XSSFWorkbook(fis)) {

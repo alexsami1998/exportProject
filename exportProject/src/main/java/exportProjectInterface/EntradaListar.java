@@ -63,7 +63,7 @@ public class EntradaListar extends JFrame {
 		
 		JButton btnEditarDados = new JButton("EDITAR DADOS");
 		btnEditarDados.setForeground(Color.ORANGE);
-		btnEditarDados.setBounds(846, 128, 117, 77);
+		btnEditarDados.setBounds(846, 95, 117, 77);
 		contentPane.add(btnEditarDados);
 
 		btnEditarDados.addActionListener(new ActionListener() {
@@ -88,7 +88,7 @@ public class EntradaListar extends JFrame {
 
 		JButton btnVoltar = new JButton("VOLTAR");
 		btnVoltar.setForeground(Color.BLUE);
-		btnVoltar.setBounds(846, 230, 117, 77);
+		btnVoltar.setBounds(846, 184, 117, 77);
 		contentPane.add(btnVoltar);
 
 		btnVoltar.addActionListener(new ActionListener() {
@@ -102,7 +102,7 @@ public class EntradaListar extends JFrame {
 
 		JButton btnMigrarAlocacao = new JButton("MIGRAR OP");
 		btnMigrarAlocacao.setForeground(Color.RED);
-		btnMigrarAlocacao.setBounds(846, 26, 117, 77);
+		btnMigrarAlocacao.setBounds(846, 6, 117, 77);
 		contentPane.add(btnMigrarAlocacao);
 
 		btnMigrarAlocacao.addActionListener(new ActionListener() {
@@ -116,7 +116,7 @@ public class EntradaListar extends JFrame {
 		
 		JButton btnExcluirDados = new JButton("EXCLUIR");
         btnExcluirDados.setForeground(new Color(139, 0, 0));
-        btnExcluirDados.setBounds(846, 334, 117, 77);
+        btnExcluirDados.setBounds(846, 547, 117, 77);
         contentPane.add(btnExcluirDados);
 
         btnExcluirDados.addActionListener(new ActionListener() {
@@ -135,11 +135,6 @@ public class EntradaListar extends JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecione uma linha para excluir.");
                 }
-                EntradaListar.this.setVisible(false);
-                
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                JOptionPane.showMessageDialog(null, "OP EXCLUÍDA");
             }
         });
 	}
@@ -157,6 +152,11 @@ public class EntradaListar extends JFrame {
                             String opCellValue = opCell.toString();
                             if (opToBeDeleted.equals(opCellValue)) {
                                 sheet.removeRow(row);
+                                EntradaListar.this.setVisible(false);
+                                
+                                Principal principal = new Principal();
+                                principal.setVisible(true);
+                                JOptionPane.showMessageDialog(null, "OP EXCLUÍDA");
                                 break;
                             }
                         }
