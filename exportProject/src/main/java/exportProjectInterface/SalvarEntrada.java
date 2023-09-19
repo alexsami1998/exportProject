@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import exportProject.ManagerData;
 import java.awt.Component;
@@ -121,10 +124,10 @@ public class SalvarEntrada extends JFrame {
 		lblNewLabel_8.setBounds(19, 464, 61, 16);
 		contentPane.add(lblNewLabel_8);
 
-		textFieldData = new JTextField();
-		textFieldData.setBounds(339, 144, 306, 26);
-		contentPane.add(textFieldData);
-		textFieldData.setColumns(10);
+		textFieldData = new JFormattedTextField(createMaskFormatter("##/##/####"));
+        textFieldData.setBounds(339, 144, 306, 26);
+        contentPane.add(textFieldData);
+        textFieldData.setColumns(10);
 
 		textFieldRef = new JTextField();
 		textFieldRef.setBounds(339, 179, 306, 26);
@@ -225,4 +228,14 @@ public class SalvarEntrada extends JFrame {
 		contentPane.add(scrollPane);
 
 	}
+	private MaskFormatter createMaskFormatter(String mask) {
+        MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter(mask);
+            formatter.setPlaceholderCharacter('_'); // Define um caractere de espaço reservado
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formatter;
+    }
 }
