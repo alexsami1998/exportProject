@@ -23,9 +23,6 @@ public class MigrarOpEnt extends JFrame {
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -39,9 +36,6 @@ public class MigrarOpEnt extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public MigrarOpEnt() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 969, 658);
@@ -72,13 +66,13 @@ public class MigrarOpEnt extends JFrame {
 				
 				 SearchOpByData.searchAndDisplayDataByOP(opDesejada);
 	            
-	            // Exiba o resultado em uma nova janela ou caixa de diálogo
-	            //JOptionPane.showMessageDialog(MigrarOpEnt.this, opDesejada, "Resultado da Pesquisa", JOptionPane.INFORMATION_MESSAGE);
+	            
+	          
 	            
 	            MigrarOpEnt.this.setVisible(false);
 	            
-	            MigEntDados migEntDados = new MigEntDados();
-	            migEntDados.setVisible(true);
+	            Principal principal = new Principal();
+	            principal.setVisible(true);
 			}
 		});
 		
