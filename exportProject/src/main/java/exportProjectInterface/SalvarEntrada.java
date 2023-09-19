@@ -67,8 +67,6 @@ public class SalvarEntrada extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				ManagerData managerData = new ManagerData();
-
 				String data = textFieldData.getText();
 				String ref = textFieldRef.getText();
 				String op = textFieldOp.getText();
@@ -79,7 +77,7 @@ public class SalvarEntrada extends JFrame {
 				String kamb = textFieldKamb.getText();
 				String sts = textFieldSts.getText();
 
-				managerData.addEntryProhibited(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
+				ManagerData.addEntryProhibited(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
 				SalvarEntrada.this.setVisible(false);
 				Principal principal = new Principal();
 				principal.setVisible(true);
@@ -176,6 +174,7 @@ public class SalvarEntrada extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SalvarEntrada.this.setVisible(false);
+				
 				Principal principal = new Principal();
 				principal.setVisible(true);
 			}
