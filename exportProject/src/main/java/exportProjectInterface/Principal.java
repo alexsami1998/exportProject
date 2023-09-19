@@ -80,9 +80,20 @@ public class Principal extends JFrame {
 		btnNewButton_1.setBounds(310, 286, 301, 50);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_4 = new JButton("Exibir OPS - Entrega");
-		btnNewButton_4.setBounds(310, 367, 301, 52);
-		contentPane.add(btnNewButton_4);
+		JButton btnEntrega = new JButton("Exibir OPS - Entrega");
+		btnEntrega.setBounds(310, 367, 301, 52);
+		contentPane.add(btnEntrega);
+		
+		btnEntrega.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e) {
+				EntregaListar entregaListar = new EntregaListar();
+				entregaListar.setVisible(true);
+				
+				Principal.this.setVisible(false);
+			}
+		});
+		
+		
 		
 		JButton btnNewButton_1_1 = new JButton("Exibir OPS - Entrada");
 		btnNewButton_1_1.setBounds(310, 211, 301, 50);
