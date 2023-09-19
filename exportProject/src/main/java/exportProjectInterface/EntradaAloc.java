@@ -70,10 +70,10 @@ public class EntradaAloc extends JFrame {
 
 		btnMigrarEntrega.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				EntradaAloc.this.setVisible(false);
+				
 				MigrarOpEntrega migrarOpEntrega = new MigrarOpEntrega();
 				migrarOpEntrega.setVisible(true);
-
-				EntradaAloc.this.setVisible(false);
 			}
 		});
 
@@ -109,6 +109,7 @@ public class EntradaAloc extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EntradaAloc.this.setVisible(false);
+				
 				Principal principal = new Principal();
 				principal.setVisible(true);
 			}
