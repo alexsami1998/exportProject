@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class Principal extends JFrame {
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	public static void main(String[] args) {
@@ -45,7 +46,7 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JList list = new JList();
+		JList<Object> list = new JList<Object>();
 		list.setBounds(74, 24, 0, 0);
 		contentPane.add(list);
 
