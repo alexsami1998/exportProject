@@ -25,6 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class RegistroEntrada extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 
@@ -99,6 +100,7 @@ public class RegistroEntrada extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegistroEntrada.this.setVisible(false);
+				
 				Principal principal = new Principal();
 				principal.setVisible(true);
 			}
