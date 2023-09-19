@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Scanner;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -13,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ManagerData {
 
+	@SuppressWarnings("resource")
 	public static void addEntryProhibited(String data, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts) {
 		
 
@@ -38,7 +38,7 @@ public class ManagerData {
 				headerRow.createCell(4).setCellValue("FRENT");
 				headerRow.createCell(5).setCellValue("TRAS");
 				headerRow.createCell(6).setCellValue("SILBOR");
-				headerRow.createCell(7).setCellValue("KAMBA");
+				headerRow.createCell(7).setCellValue("KANBAN");
 				headerRow.createCell(8).setCellValue("STATUS");
 			}
 

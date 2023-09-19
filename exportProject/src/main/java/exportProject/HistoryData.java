@@ -13,7 +13,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class HistoryData {
 
-    public static void registerEntrada(String data, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts) {
+    @SuppressWarnings("resource")
+	public static void registerEntrada(String data, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts) {
     	
     	File file = new File("dados.xlsx");
     	boolean fileExists = file.exists();
@@ -62,7 +63,8 @@ public class HistoryData {
     	}
     }
     
-    public static void registerAloc(String ofi, String dtinicio, String ref, String op, String qntd, String dtfinal, String sts) {
+    @SuppressWarnings("resource")
+	public static void registerAloc(String ofi, String dtinicio, String ref, String op, String qntd, String dtfinal, String sts) {
     	
     	File file = new File("dados.xlsx");
     	boolean fileExists = file.exists();
@@ -107,7 +109,8 @@ public class HistoryData {
     	}
     }
     
-    public static void registerEntrega(String data, String fac, String ref, String op, String qop, String qprod, String sts) {
+    @SuppressWarnings("resource")
+	public static void registerEntrega(String data, String fac, String ref, String op, String qop, String qprod, String sts) {
     	File file = new File("dados.xlsx");
 		boolean fileExists = file.exists();
 

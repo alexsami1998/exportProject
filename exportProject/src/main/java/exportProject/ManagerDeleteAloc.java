@@ -56,6 +56,7 @@ public class ManagerDeleteAloc {
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Digite a OP que deseja excluir: ");
 		String opToDelete = scanner.nextLine();

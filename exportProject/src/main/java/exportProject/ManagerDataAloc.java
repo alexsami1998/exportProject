@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ManagerDataAloc {
 
+	@SuppressWarnings("resource")
 	public static void addEntryAloc(String ref, String op, String qntd, String sts) {
 
 		String ofi = null;

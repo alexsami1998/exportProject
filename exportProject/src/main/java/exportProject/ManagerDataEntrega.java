@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Scanner;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -13,9 +12,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ManagerDataEntrega {
 
+	@SuppressWarnings("resource")
 	public static void addEntryEntrega(String ref, String op, String sts) {
-		Scanner scanner = new Scanner(System.in);
-		
 		String data = null;
 		String fac = null;
 		String qop = null;

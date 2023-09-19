@@ -67,6 +67,7 @@ public class SearchOpByDataAlocation {
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Digite a OP desejada: ");
 		String opDesejada = scanner.nextLine();
