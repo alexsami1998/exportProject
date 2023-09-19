@@ -25,6 +25,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class EntradaAloc extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 
