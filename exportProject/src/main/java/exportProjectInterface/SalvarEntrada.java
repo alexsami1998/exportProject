@@ -1,13 +1,12 @@
 package exportProjectInterface;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,10 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.MaskFormatter;
 
 import exportProject.ManagerData;
-import java.awt.Component;
 
 public class SalvarEntrada extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +24,6 @@ public class SalvarEntrada extends JFrame {
 	ManagerData adicionarDados = new ManagerData();
 
 	private JPanel contentPane;
-	private JTextField textFieldData;
 	private JTextField textFieldRef;
 	private JTextField textFieldOp;
 	private JTextField textFieldQntd;
@@ -70,7 +66,6 @@ public class SalvarEntrada extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String data = textFieldData.getText();
 				String ref = textFieldRef.getText();
 				String op = textFieldOp.getText();
 				String qntd = textFieldQntd.getText();
@@ -80,17 +75,13 @@ public class SalvarEntrada extends JFrame {
 				String kamb = textFieldKamb.getText();
 				String sts = textFieldSts.getText();
 
-				ManagerData.addEntryProhibited(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
+				ManagerData.addEntryProhibited(ref, op, qntd, frent, tras, silbor, kamb, sts);
 				SalvarEntrada.this.setVisible(false);
 				Principal principal = new Principal();
 				principal.setVisible(true);
 				JOptionPane.showMessageDialog(null, "OP REGISTRADA");
 			}
 		});
-
-		JLabel lblNewLabel = new JLabel("Data");
-		lblNewLabel.setBounds(19, 149, 29, 16);
-		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("REF");
 		lblNewLabel_1.setBounds(19, 184, 61, 16);
@@ -123,11 +114,6 @@ public class SalvarEntrada extends JFrame {
 		JLabel lblNewLabel_8 = new JLabel("STATUS");
 		lblNewLabel_8.setBounds(19, 464, 61, 16);
 		contentPane.add(lblNewLabel_8);
-
-		textFieldData = new JFormattedTextField(createMaskFormatter("##/##/####"));
-        textFieldData.setBounds(339, 144, 306, 26);
-        contentPane.add(textFieldData);
-        textFieldData.setColumns(10);
 
 		textFieldRef = new JTextField();
 		textFieldRef.setBounds(339, 179, 306, 26);
@@ -215,10 +201,6 @@ public class SalvarEntrada extends JFrame {
 		separator_1_4.setBounds(72, 188, 255, 12);
 		contentPane.add(separator_1_4);
 
-		JSeparator separator_1_5 = new JSeparator();
-		separator_1_5.setBounds(72, 153, 255, 12);
-		contentPane.add(separator_1_5);
-
 		JLabel lblNewLabel_9 = new JLabel("REGISTRAR DADOS EM - ENTRADA");
 		lblNewLabel_9.setBounds(710, 6, 228, 54);
 		contentPane.add(lblNewLabel_9);
@@ -228,14 +210,4 @@ public class SalvarEntrada extends JFrame {
 		contentPane.add(scrollPane);
 
 	}
-	private MaskFormatter createMaskFormatter(String mask) {
-        MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter(mask);
-            formatter.setPlaceholderCharacter('_'); // Define um caractere de espaço reservado
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return formatter;
-    }
 }
