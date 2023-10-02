@@ -68,7 +68,7 @@ public class MigrarOpEntrega extends JFrame {
 
 				Principal principal = new Principal();
 				principal.setVisible(true);
-				JOptionPane.showMessageDialog(null, "MIGRAÇÃO COMPLETA - LEMBRE DE PREENCHER OS DADOS RESTANTES NO HISTÓRICO ENTREGA");
+				JOptionPane.showMessageDialog(null, "MIGRAÇÃO COMPLETA");
 			}
 		});
 
