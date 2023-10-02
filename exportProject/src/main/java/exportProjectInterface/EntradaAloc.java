@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,6 +30,7 @@ public class EntradaAloc extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private boolean alocFechado = false;
 
 	/**
 	 * Launch the application.
@@ -71,10 +74,15 @@ public class EntradaAloc extends JFrame {
 
 		btnMigrarEntrega.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(alocFechado) {
 				EntradaAloc.this.setVisible(false);
 				
 				MigrarOpEntrega migrarOpEntrega = new MigrarOpEntrega();
 				migrarOpEntrega.setVisible(true);
+				
+			} else {
+				JOptionPane.showMessageDialog(null, "Você deve inserir a data de fechamento antes de migrar a OP.");
+			}
 			}
 		});
 
@@ -120,6 +128,31 @@ public class EntradaAloc extends JFrame {
         btnExcluirDados.setForeground(new Color(139, 0, 0));
         btnExcluirDados.setBounds(846, 547, 117, 77);
         contentPane.add(btnExcluirDados);
+        
+        JButton btnFecharAloc = new JButton("Fechar Aloc.");
+        btnFecharAloc.setForeground(Color.GRAY);
+        btnFecharAloc.setBounds(846, 276, 117, 77);
+        contentPane.add(btnFecharAloc);
+
+        btnFecharAloc.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = table.getSelectedRow();
+                int selectedColumn = table.getSelectedColumn();
+                alocFechado = true;
+
+                if (selectedRow != -1 && selectedColumn != -1) {
+                    LocalDateTime dataHoraAtual = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    String dataHoraFormatada = dataHoraAtual.format(formatter);
+
+                    tableModel.setValueAt(dataHoraFormatada, selectedRow, selectedColumn);
+                    atualizarCelulaNoExcel(selectedRow, selectedColumn, dataHoraFormatada);
+                  
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione uma célula para preencher com data e hora.");
+                }
+            }
+        });
 
         btnExcluirDados.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -251,5 +284,4 @@ public class EntradaAloc extends JFrame {
 			System.out.println("Erro ao abrir o arquivo: " + e.getMessage());
 		}
 	}
-
 }
