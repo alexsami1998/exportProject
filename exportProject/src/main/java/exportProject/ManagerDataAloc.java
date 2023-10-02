@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -16,7 +18,6 @@ public class ManagerDataAloc {
 	public static void addEntryAloc(String ref, String op, String qntd, String sts) {
 
 		String ofi = null;
-		String dtinicio = null;
 		String dtfinal = null;
 
 		File file = new File("dados.xlsx");
@@ -43,10 +44,13 @@ public class ManagerDataAloc {
 				headerRow.createCell(6).setCellValue("STATUS");
 			}
 
+			LocalDateTime dataHoraAtual = LocalDateTime.now();
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+	        String dtInicio = dataHoraAtual.format(formatter);
 			int lastRowNum = sheet.getLastRowNum();
 			Row dataRow = sheet.createRow(lastRowNum + 1);
 			dataRow.createCell(0).setCellValue(ofi);
-			dataRow.createCell(1).setCellValue(dtinicio);
+			dataRow.createCell(1).setCellValue(dtInicio);
 			dataRow.createCell(2).setCellValue(ref);
 			dataRow.createCell(3).setCellValue(op);
 			dataRow.createCell(4).setCellValue(qntd);
@@ -56,7 +60,6 @@ public class ManagerDataAloc {
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
 				System.out.println("Dados exportados para o arquivo dados.xlsx");
-				HistoryData.registerAloc(ofi, dtinicio, ref, op, qntd, dtfinal, sts);
 			}
 		} catch (IOException e) {
 			System.out.println("Erro ao fechar o workbook: " + e.getMessage());
