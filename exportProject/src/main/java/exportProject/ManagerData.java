@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -13,7 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ManagerData {
 
 	@SuppressWarnings("resource")
-	public static void addEntryProhibited(String data, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts) {
+	public static void addEntryProhibited(String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts) {
 		
 
 		File file = new File("dados.xlsx");
@@ -41,10 +43,14 @@ public class ManagerData {
 				headerRow.createCell(7).setCellValue("KANBAN");
 				headerRow.createCell(8).setCellValue("STATUS");
 			}
+			
+			LocalDateTime dataHoraAtual = LocalDateTime.now();
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+	        String dataHoraFormatada = dataHoraAtual.format(formatter);
 
 			int lastRowNum = sheet.getLastRowNum();
 			Row dataRow = sheet.createRow(lastRowNum + 1);
-			dataRow.createCell(0).setCellValue(data);
+			dataRow.createCell(0).setCellValue(dataHoraFormatada);
 			dataRow.createCell(1).setCellValue(ref);
 			dataRow.createCell(2).setCellValue(op);
 			dataRow.createCell(3).setCellValue(qntd);
@@ -56,7 +62,7 @@ public class ManagerData {
 			
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
-				HistoryData.registerEntrada(data, ref, op, qntd, frent, tras, silbor, kamb, sts);
+				HistoryData.registerEntrada(dataHoraFormatada, ref, op, qntd, frent, tras, silbor, kamb, sts);
 				System.out.println("Dados exportados para o arquivo dados.xlsx");
 			}
 		} catch (IOException e) {
