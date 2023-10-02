@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -14,7 +16,6 @@ public class ManagerDataEntrega {
 
 	@SuppressWarnings("resource")
 	public static void addEntryEntrega(String ref, String op, String sts) {
-		String data = null;
 		String fac = null;
 		String qop = null;
 		String qprod = null;
@@ -43,10 +44,13 @@ public class ManagerDataEntrega {
 				headerRow.createCell(5).setCellValue("Q. PROD.");
 				headerRow.createCell(6).setCellValue("STATUS");
 			}
+			LocalDateTime dataHoraAtual = LocalDateTime.now();
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+	        String dataEntrega = dataHoraAtual.format(formatter);
 
 			int lastRowNum = sheet.getLastRowNum();
 			Row dataRow = sheet.createRow(lastRowNum + 1);
-			dataRow.createCell(0).setCellValue(data);
+			dataRow.createCell(0).setCellValue(dataEntrega);
 			dataRow.createCell(1).setCellValue(fac);
 			dataRow.createCell(2).setCellValue(ref);
 			dataRow.createCell(3).setCellValue(op);
@@ -57,7 +61,7 @@ public class ManagerDataEntrega {
 			try (FileOutputStream fileOut = new FileOutputStream("dados.xlsx")) {
 				workbook.write(fileOut);
 				System.out.println("Dados exportados para o arquivo dados.xlsx");
-				HistoryData.registerEntrega(data, fac, ref, op, qop, qprod, sts);
+				//HistoryData.registerEntrega(dataEntrega, fac, ref, op, qop, qprod, sts);
 			}
 		} catch (IOException e) {
 			System.out.println("Erro ao fechar o workbook: " + e.getMessage());
