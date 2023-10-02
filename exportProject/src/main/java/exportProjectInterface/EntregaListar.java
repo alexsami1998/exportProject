@@ -109,6 +109,21 @@ public class EntregaListar extends JFrame {
         btnExcluirDados.setForeground(new Color(139, 0, 0));
         btnExcluirDados.setBounds(846, 547, 117, 77);
         contentPane.add(btnExcluirDados);
+        
+        JButton btnRegistrarE = new JButton("Registrar Entrega");
+        btnRegistrarE.setForeground(Color.GRAY);
+        btnRegistrarE.setBounds(846, 189, 117, 77);
+        contentPane.add(btnRegistrarE);
+        
+        btnRegistrarE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EntregaListar.this.setVisible(false);
+				
+				MigrarOpEntrega migrarOpEntrega = new MigrarOpEntrega();
+				migrarOpEntrega.setVisible(true);
+				
+			}
+		});
 
         btnExcluirDados.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -238,5 +253,4 @@ public class EntregaListar extends JFrame {
 			System.out.println("Erro ao abrir o arquivo: " + e.getMessage());
 		}
 	}
-
 }
