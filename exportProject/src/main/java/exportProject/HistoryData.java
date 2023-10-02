@@ -14,7 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class HistoryData {
 
     @SuppressWarnings("resource")
-	public static void registerEntrada(String data, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts) {
+	public static void registerEntrada(String dataHoraFormatada, String ref, String op, String qntd, String frent, String tras, String silbor, String kamb, String sts) {
     	
     	File file = new File("dados.xlsx");
     	boolean fileExists = file.exists();
@@ -44,7 +44,7 @@ public class HistoryData {
     		
     		int lastRowNum = sheet.getLastRowNum();
     		Row dataRow = sheet.createRow(lastRowNum + 1);
-    		dataRow.createCell(0).setCellValue(data);
+    		dataRow.createCell(0).setCellValue(dataHoraFormatada);
     		dataRow.createCell(1).setCellValue(ref);
     		dataRow.createCell(2).setCellValue(op);
     		dataRow.createCell(3).setCellValue(qntd);
