@@ -119,8 +119,8 @@ public class EntregaListar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				EntregaListar.this.setVisible(false);
 				
-				MigrarOpEntrega migrarOpEntrega = new MigrarOpEntrega();
-				migrarOpEntrega.setVisible(true);
+				EntregaFechar entregaFechar = new EntregaFechar();
+				entregaFechar.setVisible(true);
 				
 			}
 		});
