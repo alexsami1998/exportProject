@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import exportProject.SearchOpByDataAlocation;
+import exportProject.SearchOpByData;
 
 public class EntregaFechar extends JFrame {
 
@@ -68,7 +68,7 @@ public class EntregaFechar extends JFrame {
 
 				String opDesejada = textField.getText();
 
-				SearchOpByDataAlocation.searchAndDisplayDataByRegisterEntrega(opDesejada);
+				SearchOpByData.searchAndDisplayDataByRegisterEntrega(opDesejada);
 
 				EntregaFechar.this.setVisible(false);
 
@@ -86,9 +86,9 @@ public class EntregaFechar extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EntregaFechar.this.setVisible(false);
-				
-				EntradaAloc entradaAloc = new EntradaAloc();
-				entradaAloc.setVisible(true);
+
+				EntregaListar entregaListar = new EntregaListar();
+				entregaListar.setVisible(true);
 			}
 		});
 	}

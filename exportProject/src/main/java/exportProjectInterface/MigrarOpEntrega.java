@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import exportProject.SearchOpByDataAlocation;
+import exportProject.SearchOpByData;
 
 public class MigrarOpEntrega extends JFrame {
 
@@ -62,7 +62,7 @@ public class MigrarOpEntrega extends JFrame {
 
 				String opDesejada = textField.getText();
 
-				SearchOpByDataAlocation.searchAndDisplayDataByAlocation(opDesejada);
+				SearchOpByData.searchAndDisplayDataByAlocation(opDesejada);
 
 				MigrarOpEntrega.this.setVisible(false);
 
