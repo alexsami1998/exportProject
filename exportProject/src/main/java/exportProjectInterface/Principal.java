@@ -50,7 +50,7 @@ public class Principal extends JFrame {
 		list.setBounds(74, 24, 0, 0);
 		contentPane.add(list);
 
-		JButton btnAdicionarDados = new JButton("Adicionar dados no arquivo de ENTRADA");
+		JButton btnAdicionarDados = new JButton("ADICIONAR DADOS - ENTRADA");
 		btnAdicionarDados.setForeground(Color.BLUE);
 		btnAdicionarDados.setBounds(74, 113, 301, 74);
 		btnAdicionarDados.setHorizontalAlignment(SwingConstants.LEFT);
@@ -70,7 +70,7 @@ public class Principal extends JFrame {
 		mntmNewMenuItem.setBounds(423, 0, 68, 19);
 		contentPane.add(mntmNewMenuItem);
 
-		JButton btnAlocacao = new JButton("Exibir OPS - Alocação");
+		JButton btnAlocacao = new JButton("EXIBIR OPS - ALOCAÇÃO");
 		btnAlocacao.setBounds(74, 284, 301, 50);
 		contentPane.add(btnAlocacao);
 		btnAlocacao.addActionListener(new ActionListener() {
@@ -82,7 +82,7 @@ public class Principal extends JFrame {
 			}
 		});
 
-		JButton btnEntrega = new JButton("Exibir OPS - Entrega");
+		JButton btnEntrega = new JButton("EXIBIR OPS - ENTREGA");
 		btnEntrega.setBounds(74, 359, 301, 52);
 		contentPane.add(btnEntrega);
 
@@ -95,7 +95,7 @@ public class Principal extends JFrame {
 			}
 		});
 
-		JButton btnEntradaListar = new JButton("Exibir OPS - Entrada");
+		JButton btnEntradaListar = new JButton("EXIBIR OPS - ENTRADA");
 		btnEntradaListar.setBounds(74, 211, 301, 50);
 		contentPane.add(btnEntradaListar);
 
@@ -147,11 +147,11 @@ public class Principal extends JFrame {
 			}
 		});
 
-		JLabel lblVersion = new JLabel("version - 0.1");
+		JLabel lblVersion = new JLabel("VERSION - 0.1");
 		lblVersion.setBounds(867, 586, 96, 16);
 		contentPane.add(lblVersion);
 		
-		JButton btnSair = new JButton("Sair");
+		JButton btnSair = new JButton("SAIR");
 		btnSair.setForeground(Color.RED);
 		btnSair.setBounds(310, 550, 301, 52);
 		contentPane.add(btnSair);

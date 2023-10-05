@@ -110,7 +110,7 @@ public class EntregaListar extends JFrame {
         btnExcluirDados.setBounds(846, 547, 117, 77);
         contentPane.add(btnExcluirDados);
         
-        JButton btnRegistrarE = new JButton("Registrar Entrega");
+        JButton btnRegistrarE = new JButton("REGISTRAR ENTREGA");
         btnRegistrarE.setForeground(Color.GRAY);
         btnRegistrarE.setBounds(846, 189, 117, 77);
         contentPane.add(btnRegistrarE);

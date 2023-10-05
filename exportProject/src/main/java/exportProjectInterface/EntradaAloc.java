@@ -129,7 +129,7 @@ public class EntradaAloc extends JFrame {
         btnExcluirDados.setBounds(846, 547, 117, 77);
         contentPane.add(btnExcluirDados);
         
-        JButton btnFecharAloc = new JButton("Fechar Aloc.");
+        JButton btnFecharAloc = new JButton("FECHAR OP");
         btnFecharAloc.setForeground(Color.GRAY);
         btnFecharAloc.setBounds(846, 276, 117, 77);
         contentPane.add(btnFecharAloc);
