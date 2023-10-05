@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +13,6 @@ import javax.swing.JList;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -52,7 +52,7 @@ public class Principal extends JFrame {
 
 		JButton btnAdicionarDados = new JButton("Adicionar dados no arquivo de ENTRADA");
 		btnAdicionarDados.setForeground(Color.BLUE);
-		btnAdicionarDados.setBounds(310, 55, 301, 74);
+		btnAdicionarDados.setBounds(74, 113, 301, 74);
 		btnAdicionarDados.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(btnAdicionarDados);
 
@@ -65,12 +65,13 @@ public class Principal extends JFrame {
 			}
 		});
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Gerenciador de OPS");
-		mntmNewMenuItem.setBounds(370, 24, 183, 19);
+		JMenuItem mntmNewMenuItem = new JMenuItem("GOP");
+		mntmNewMenuItem.setBackground(Color.GRAY);
+		mntmNewMenuItem.setBounds(423, 0, 68, 19);
 		contentPane.add(mntmNewMenuItem);
 
 		JButton btnAlocacao = new JButton("Exibir OPS - Alocação");
-		btnAlocacao.setBounds(310, 227, 301, 50);
+		btnAlocacao.setBounds(74, 284, 301, 50);
 		contentPane.add(btnAlocacao);
 		btnAlocacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,7 +83,7 @@ public class Principal extends JFrame {
 		});
 
 		JButton btnEntrega = new JButton("Exibir OPS - Entrega");
-		btnEntrega.setBounds(310, 302, 301, 52);
+		btnEntrega.setBounds(74, 359, 301, 52);
 		contentPane.add(btnEntrega);
 
 		btnEntrega.addActionListener(new ActionListener() {
@@ -95,7 +96,7 @@ public class Principal extends JFrame {
 		});
 
 		JButton btnEntradaListar = new JButton("Exibir OPS - Entrada");
-		btnEntradaListar.setBounds(310, 155, 301, 50);
+		btnEntradaListar.setBounds(74, 211, 301, 50);
 		contentPane.add(btnEntradaListar);
 
 		btnEntradaListar.addActionListener(new ActionListener() {
@@ -108,7 +109,7 @@ public class Principal extends JFrame {
 		});
 
 		JButton btnEntradaReg = new JButton("ENTRADA");
-		btnEntradaReg.setBounds(386, 403, 142, 29);
+		btnEntradaReg.setBounds(618, 120, 266, 60);
 		contentPane.add(btnEntradaReg);
 
 		btnEntradaReg.addActionListener(new ActionListener() {
@@ -120,16 +121,8 @@ public class Principal extends JFrame {
 			}
 		});
 
-		JSeparator separator_1_2 = new JSeparator();
-		separator_1_2.setBounds(331, 359, 255, 12);
-		contentPane.add(separator_1_2);
-
-		JSeparator separator_1_2_1 = new JSeparator();
-		separator_1_2_1.setBounds(331, 366, 255, 12);
-		contentPane.add(separator_1_2_1);
-
 		JButton btnAlocacaoReg = new JButton("ALOCAÇÃO");
-		btnAlocacaoReg.setBounds(386, 444, 142, 29);
+		btnAlocacaoReg.setBounds(618, 241, 266, 60);
 		contentPane.add(btnAlocacaoReg);
 
 		btnAlocacaoReg.addActionListener(new ActionListener() {
@@ -142,7 +135,7 @@ public class Principal extends JFrame {
 		});
 
 		JButton btnEntregaReg = new JButton("ENTREGA");
-		btnEntregaReg.setBounds(386, 485, 142, 29);
+		btnEntregaReg.setBounds(618, 355, 266, 60);
 		contentPane.add(btnEntregaReg);
 
 		btnEntregaReg.addActionListener(new ActionListener() {
@@ -154,11 +147,7 @@ public class Principal extends JFrame {
 			}
 		});
 
-		JLabel lblNewLabel = new JLabel("HISTÓRICO");
-		lblNewLabel.setBounds(423, 376, 88, 16);
-		contentPane.add(lblNewLabel);
-
-		JLabel lblVersion = new JLabel("version - 1.0.1");
+		JLabel lblVersion = new JLabel("version - 0.1");
 		lblVersion.setBounds(867, 586, 96, 16);
 		contentPane.add(lblVersion);
 		
@@ -166,6 +155,27 @@ public class Principal extends JFrame {
 		btnSair.setForeground(Color.RED);
 		btnSair.setBounds(310, 550, 301, 52);
 		contentPane.add(btnSair);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(146, 10, 142, 33);
+		contentPane.add(panel);
+		
+		JLabel lblNewLabel_1 = new JLabel("GERENCIAMENTO");
+		panel.add(lblNewLabel_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(675, 10, 142, 33);
+		contentPane.add(panel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("HISTÓRICO");
+		panel_1.add(lblNewLabel_1_1);
+		
+		Box verticalBox = Box.createVerticalBox();
+		verticalBox.setBounds(455, 24, 7, 527);
+		contentPane.add(verticalBox);
+		
+		Box verticalBox_1 = Box.createVerticalBox();
+		verticalBox.add(verticalBox_1);
 
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
